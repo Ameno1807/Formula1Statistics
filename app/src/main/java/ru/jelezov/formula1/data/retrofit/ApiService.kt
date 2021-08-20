@@ -2,6 +2,7 @@ package ru.jelezov.formula1.data.retrofit
 
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import ru.jelezov.formula1.data.retrofit.responce.QuoteResponseTopDrivers
 import ru.jelezov.formula1.data.retrofit.responce.QuoteResponseTopTeam
 
 interface ApiService {
@@ -11,4 +12,7 @@ interface ApiService {
     )
     @GET("/constructors/standings/2021")
     suspend fun loadTopTeam(): QuoteResponseTopTeam
+
+    @GET("/constructors/drivers/2021")
+    suspend fun loadTopDrivers(): QuoteResponseTopDrivers
 }

@@ -5,20 +5,23 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import ru.jelezov.formula1.databinding.ItemDriverBinding
+import ru.jelezov.formula1.model.TopDriversModel
 
-/*
+
 class AdapterFragmentTopRacers: ListAdapter<TopDriversModel, AdapterFragmentTopRacers.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
-        ItemTeamBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        ItemDriverBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
-    class ViewHolder(private val binding: ItemTeamBinding) : RecyclerView.ViewHolder(binding.root) {
-        /*fun bind(item: TopDriversModel){
+    class ViewHolder(private val binding: ItemDriverBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: TopDriversModel){
             binding.points.text = item.points.toString()
             binding.position.text = item.position.toString()
-            binding.teamName.text = "1"
-
-        }*/
+            binding.teamName.text = item.team_name
+            binding.driverName.text = item.driver_name
+            binding.nationality.text = item.nationality
+        }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -35,4 +38,4 @@ class DiffCallback : DiffUtil.ItemCallback<TopDriversModel>() {
     override fun areContentsTheSame(oldItem: TopDriversModel, newItem: TopDriversModel): Boolean {
         return oldItem.position == newItem.position
     }
-}*/
+}
