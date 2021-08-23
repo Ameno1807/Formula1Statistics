@@ -1,8 +1,8 @@
 package ru.jelezov.formula1.data.retrofit
 
 import ru.jelezov.formula1.data.RemoteDataSource
-import ru.jelezov.formula1.data.retrofit.responce.QuoteResponseTopDrivers
-import ru.jelezov.formula1.data.retrofit.responce.QuoteResponseTopTeam
+import ru.jelezov.formula1.data.retrofit.responce.topDrivers.QuoteResponseTopDrivers
+import ru.jelezov.formula1.data.retrofit.responce.topTeam.QuoteResponseTopTeam
 import javax.inject.Inject
 
 class RetrofitDataSource @Inject constructor(private val service: ApiService) : RemoteDataSource {
@@ -10,7 +10,7 @@ class RetrofitDataSource @Inject constructor(private val service: ApiService) : 
         return service.loadTopTeam()
     }
 
-    override suspend fun loadTopDrivers(): QuoteResponseTopDrivers {
+    override suspend fun loadTopDrivers() : QuoteResponseTopDrivers {
         return service.loadTopDrivers()
     }
 

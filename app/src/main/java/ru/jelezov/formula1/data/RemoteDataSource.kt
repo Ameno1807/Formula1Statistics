@@ -1,7 +1,7 @@
 package ru.jelezov.formula1.data
 
-import ru.jelezov.formula1.data.retrofit.responce.QuoteResponseTopDrivers
-import ru.jelezov.formula1.data.retrofit.responce.QuoteResponseTopTeam
+import ru.jelezov.formula1.data.retrofit.responce.topDrivers.QuoteResponseTopDrivers
+import ru.jelezov.formula1.data.retrofit.responce.topTeam.QuoteResponseTopTeam
 
 
 interface RemoteDataSource {

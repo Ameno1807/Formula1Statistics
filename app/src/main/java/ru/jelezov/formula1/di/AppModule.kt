@@ -40,7 +40,7 @@ class AppModule {
         client: OkHttpClient
     ): Retrofit = Retrofit.Builder()
         .client(client)
-        .baseUrl("https://f1-live-motorsport-data.p.rapidapi.com")
+        .baseUrl("http://ergast.com")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

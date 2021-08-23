@@ -9,11 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="ru.jelezov.formula1.ui.topTeamFragment.FragmentTopTeam"
         android:label="@string/title_topTeam"
-        tools:layout="@layout/fragment_top_rices" />
+        tools:layout="@layout/fragment_top_drivers" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="ru.jelezov.formula1.ui.topRicersFragment.FragmentTopRacers"
+        android:name="ru.jelezov.formula1.ui.topDriversFragment.FragmentTopDrivers"
         android:label="@string/title_topRaces"
         tools:layout="@layout/fragment_top_team" />
 

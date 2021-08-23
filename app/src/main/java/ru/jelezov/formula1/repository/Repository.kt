@@ -9,24 +9,31 @@ class Repository @Inject constructor(
     private val remoteDataSource: RetrofitDataSource
 ) {
     suspend fun loadTopTeam() : List<TopTeamModel> {
-        return remoteDataSource.loadTopTeam().results.map { teamsResponse ->
-            TopTeamModel(
-                name = teamsResponse.team_name,
-                position = teamsResponse.position,
-                points = teamsResponse.points,
-            )
+        val teams = remoteDataSource.loadTopTeam().MRData.StandingsTable.StandingsLists.map { teamsResponse ->
+            teamsResponse.ConstructorStandings.map { teams ->
+                TopTeamModel(
+                    name = teams.Constructor.name,
+                    position = teams.position,
+                    points = teams.points,
+                )
+            }
         }
+        return teams.flatten()
     }
 
     suspend fun loadTopDrivers() : List<TopDriversModel> {
-        return remoteDataSource.loadTopDrivers().results.map { driversResponse ->
-            TopDriversModel(
-                driver_name = driversResponse.driver_name,
-                nationality = driversResponse.nationality,
-                position = driversResponse.position,
-                points = driversResponse.points,
-                team_name = driversResponse.team_name
-            )
+        val drivers = remoteDataSource.loadTopDrivers().MRData.StandingsTable.StandingsLists.map { driversResponse ->
+           driversResponse.DriverStandings.map { team ->
+               TopDriversModel(
+                   driver_name = team.Driver.givenName,
+                   nationality = team.Driver.nationality,
+                   points = team.points,
+                   position = team.position,
+                   Constructors = team.Constructors,
+                   driver_family = team.Driver.familyName
+               )
+           }
         }
+        return drivers.flatten()
     }
 }

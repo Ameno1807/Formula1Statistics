@@ -1,4 +1,4 @@
-package ru.jelezov.formula1.ui.topRicersFragment
+package ru.jelezov.formula1.ui.topDriversFragment
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,7 +11,7 @@ import ru.jelezov.formula1.repository.Repository
 import javax.inject.Inject
 
 @HiltViewModel
-class FragmentTopRacersViewModel @Inject constructor(
+class FragmentTopDriversViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
 

@@ -1,4 +1,4 @@
-package ru.jelezov.formula1.ui.topRicersFragment
+package ru.jelezov.formula1.ui.topDriversFragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -16,11 +16,11 @@ class AdapterFragmentTopRacers: ListAdapter<TopDriversModel, AdapterFragmentTopR
 
     class ViewHolder(private val binding: ItemDriverBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TopDriversModel){
-            binding.points.text = item.points.toString()
-            binding.position.text = item.position.toString()
-            binding.teamName.text = item.team_name
+            binding.points.text = item.points
+            binding.position.text = item.position
             binding.driverName.text = item.driver_name
-            binding.nationality.text = item.nationality
+            binding.driverFamily.text = item.driver_family
+            binding.teamName.text = item.Constructors.joinToString { it.name }
         }
     }
 

@@ -4,7 +4,15 @@
     <string name="team_avatars">team_avatars</string>
     <string name="mercedes">Mercedes</string>
     <string name="_100">100</string>
-    <string name="title_topTeam">Кубок конструкторов</string>
-    <string name="title_topRaces">Рейтинг Пилотов</string>
-    <string name="title_raceCalendar">Расписание гонок</string>
+    <string name="title_topTeam">Constructor Standings</string>
+    <string name="title_topRaces">Driver Standings</string>
+    <string name="title_raceCalendar">Race Schedule</string>
+    <string name="_2021_driver_standings">2021 Driver Standings</string>
+    <string name="_2021_constructor_standings">2021 Constructor Standings</string>
+    <string name="pos">POS</string>
+    <string name="pts">PTS</string>
+    <string name="team">TEAM</string>
+    <string name="car">CAR</string>
+    <string name="driver">DRIVER</string>
+    <string name="background_top">background_top</string>
 </resources>

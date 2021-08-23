@@ -3,63 +3,86 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="16dp"
-    app:cardBackgroundColor="@color/gray"
-    app:cardCornerRadius="15dp"
-    app:cardElevation="5dp">
+    android:layout_height="40dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginStart="3dp"
+    android:layout_marginEnd="3dp"
+    app:cardBackgroundColor="@color/gray">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ru.jelezov.formula1.ui.customView.TrapezoidView
+            android:id="@+id/trapezoidView"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:rotationX="180"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ru.jelezov.formula1.ui.customView.TrapezoidViewRed
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:rotationY="180"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/position"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="7dp"
+            android:fontFamily="@font/xolonium_bold"
             android:gravity="center"
             android:text="@string/_1"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/team_name"
-            app:layout_constraintHorizontal_bias="0.14"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SmallSp"
+            android:layout_marginLeft="7dp" />
 
 
         <TextView
             android:id="@+id/team_name"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginStart="130dp"
+            android:fontFamily="@font/xolonium_bold"
             android:gravity="center"
             android:text="@string/mercedes"
             android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/points"
-            app:layout_constraintHorizontal_bias="0.47"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="130dp"
+            tools:ignore="SmallSp" />
 
         <TextView
             android:id="@+id/points"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:layout_marginEnd="7dp"
+            android:fontFamily="@font/xolonium_bold"
             android:gravity="center"
             android:text="@string/_100"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.98"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="7dp"
+            tools:ignore="SmallSp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

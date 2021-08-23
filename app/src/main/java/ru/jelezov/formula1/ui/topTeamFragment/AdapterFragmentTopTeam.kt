@@ -16,8 +16,8 @@ class AdapterFragmentTopTeam() : ListAdapter<TopTeamModel, AdapterFragmentTopTea
     class ViewHolder(private val binding: ItemTeamBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TopTeamModel){
             binding.teamName.text = item.name
-            binding.points.text = item.points.toString()
-            binding.position.text = item.position.toString()
+            binding.points.text = item.points
+            binding.position.text = item.position
         }
     }
 
@@ -26,6 +26,7 @@ class AdapterFragmentTopTeam() : ListAdapter<TopTeamModel, AdapterFragmentTopTea
     }
 
 }
+
 
 class DiffCallback : DiffUtil.ItemCallback<TopTeamModel>() {
     override fun areItemsTheSame(oldItem: TopTeamModel, newItem: TopTeamModel): Boolean {
