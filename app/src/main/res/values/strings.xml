@@ -15,4 +15,5 @@
     <string name="car">CAR</string>
     <string name="driver">DRIVER</string>
     <string name="background_top">background_top</string>
+    <string name="error_data_not_found">Sorry! Something went wrong - we can not find this data in the system.</string>
 </resources>

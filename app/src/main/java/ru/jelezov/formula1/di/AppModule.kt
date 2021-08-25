@@ -1,8 +1,11 @@
 package ru.jelezov.formula1.di
 
+import android.content.Context
+import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -10,8 +13,10 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.jelezov.formula1.data.retrofit.ApiService
-import ru.jelezov.formula1.data.retrofit.RetrofitDataSource
+import ru.jelezov.formula1.data.locale.room.RoomDataSource
+import ru.jelezov.formula1.data.locale.room.RoomDatabase
+import ru.jelezov.formula1.data.remote.retrofit.ApiService
+import ru.jelezov.formula1.data.remote.retrofit.RetrofitDataSource
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -22,6 +27,11 @@ class AppModule {
     @Provides
     fun provide(apiService: ApiService) : RetrofitDataSource {
         return RetrofitDataSource(apiService)
+    }
+
+    @Provides
+    fun provideRoomDataSource(roomDatabase: RoomDatabase) : RoomDataSource {
+        return RoomDataSource(roomDatabase)
     }
 
     @Provides
@@ -48,6 +58,16 @@ class AppModule {
     @Singleton
     fun provideService(retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideYourDatabase(
+        @ApplicationContext app: Context
+    ) = Room.databaseBuilder(
+        app,
+        RoomDatabase::class.java,
+        "myDB"
+    ).build()
 
     @Provides
     @ApplicationScope

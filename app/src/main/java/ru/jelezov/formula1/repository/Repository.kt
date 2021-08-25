@@ -1,39 +1,52 @@
 package ru.jelezov.formula1.repository
 
-import ru.jelezov.formula1.data.retrofit.RetrofitDataSource
+import androidx.room.withTransaction
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import ru.jelezov.formula1.data.locale.room.RoomDataSource
+import ru.jelezov.formula1.data.remote.retrofit.RetrofitDataSource
 import ru.jelezov.formula1.model.TopDriversModel
 import ru.jelezov.formula1.model.TopTeamModel
+import ru.jelezov.formula1.utils.Resource
+import ru.jelezov.formula1.utils.networkBoundResource
 import javax.inject.Inject
 
 class Repository @Inject constructor(
-    private val remoteDataSource: RetrofitDataSource
+    private val remoteDataSource: RetrofitDataSource,
+    private val db: RoomDataSource
 ) {
-    suspend fun loadTopTeam() : List<TopTeamModel> {
-        val teams = remoteDataSource.loadTopTeam().MRData.StandingsTable.StandingsLists.map { teamsResponse ->
-            teamsResponse.ConstructorStandings.map { teams ->
-                TopTeamModel(
-                    name = teams.Constructor.name,
-                    position = teams.position,
-                    points = teams.points,
-                )
+    fun loadTopTeam(): Flow<Resource<List<TopTeamModel>>> = networkBoundResource(
+        query = {
+            db.readAllTopTeam()
+        },
+        fetch = {
+            delay(500)
+            remoteDataSource.loadTopTeam()
+        },
+        saveFetchResult = { team ->
+            db.db().withTransaction {
+                db.deleteAllTopTeamsList()
+                db.insertTopTeam(team)
+            }
+
+        }
+    )
+
+
+    fun loadTopDrivers() : Flow<Resource<List<TopDriversModel>>> = networkBoundResource(
+        query = {
+            db.readAllTopDrivers()
+        },
+        fetch = {
+            delay(500)
+            remoteDataSource.loadTopDrivers()
+        },
+        saveFetchResult = { drivers ->
+            db.db().withTransaction {
+                db.deleteAllTopDriversList()
+                db.insertTopDrivers(drivers)
             }
         }
-        return teams.flatten()
-    }
+    )
 
-    suspend fun loadTopDrivers() : List<TopDriversModel> {
-        val drivers = remoteDataSource.loadTopDrivers().MRData.StandingsTable.StandingsLists.map { driversResponse ->
-           driversResponse.DriverStandings.map { team ->
-               TopDriversModel(
-                   driver_name = team.Driver.givenName,
-                   nationality = team.Driver.nationality,
-                   points = team.points,
-                   position = team.position,
-                   Constructors = team.Constructors,
-                   driver_family = team.Driver.familyName
-               )
-           }
-        }
-        return drivers.flatten()
-    }
 }

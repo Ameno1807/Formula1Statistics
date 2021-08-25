@@ -1,4 +1,4 @@
-package ru.jelezov.formula1.data.retrofit.responce.topDrivers
+package ru.jelezov.formula1.data.remote.retrofit.responce.topTeam
 
 data class MRData(
     val StandingsTable: StandingsTable,

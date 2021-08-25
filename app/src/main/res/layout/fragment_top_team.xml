@@ -27,13 +27,13 @@
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/background_top"
         android:rotationY="180"
         android:src="@drawable/formula_car_back"
         app:layout_constraintBottom_toBottomOf="@id/title_team"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/title_team"
-        android:contentDescription="@string/background_top" />
+        app:layout_constraintTop_toTopOf="@+id/title_team" />
 
     <TextView
         android:id="@+id/textView"
@@ -59,13 +59,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/xolonium_bold"
         android:text="@string/pos"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_team"
-        android:layout_marginLeft="7dp"
         tools:ignore="SmallSp" />
 
     <TextView
@@ -73,27 +73,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
+        android:layout_marginLeft="130dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/xolonium_bold"
         android:text="@string/team"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_team"
-        android:layout_marginLeft="130dp"
         tools:ignore="SmallSp" />
 
     <TextView
         android:id="@+id/pts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="7dp"
+        android:layout_marginRight="7dp"
+        android:fontFamily="@font/xolonium_bold"
         android:text="@string/pts"
         android:textSize="10sp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/xolonium_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_team"
-        android:layout_marginRight="7dp"
         tools:ignore="SmallSp" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -106,5 +106,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pos"
         tools:listitem="@layout/item_team" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateTint="@color/red"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/recycler_teams"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        tools:visibility="visible"
+        tools:targetApi="lollipop" />
+
+    <TextView
+        android:id="@+id/text_view_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:visibility="invisible"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar"
+        tools:text="@string/error_data_not_found"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
