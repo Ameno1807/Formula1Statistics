@@ -1,9 +1,6 @@
 package ru.jelezov.formula1.data.locale.room.topTeam
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 import ru.jelezov.formula1.model.TopTeamModel
 
@@ -17,4 +14,8 @@ interface TopTeamDao {
 
     @Query("DELETE FROM topTeam_table")
     suspend fun deleteAllTopTeamsList()
+
+    @Update
+    suspend fun updateTopTeam(teams: List<TopTeamModel>)
+
 }

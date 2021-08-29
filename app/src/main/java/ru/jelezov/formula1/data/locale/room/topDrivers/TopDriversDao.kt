@@ -1,11 +1,9 @@
 package ru.jelezov.formula1.data.locale.room.topDrivers
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 import ru.jelezov.formula1.model.TopDriversModel
+import ru.jelezov.formula1.model.TopTeamModel
 
 @Dao
 interface TopDriversDao {
@@ -17,4 +15,7 @@ interface TopDriversDao {
 
     @Query("DELETE FROM topDrivers_table")
     suspend fun deleteAllTopDriversList()
+
+    @Update
+    suspend fun updateTopDrivers(drivers: List<TopDriversModel>)
 }

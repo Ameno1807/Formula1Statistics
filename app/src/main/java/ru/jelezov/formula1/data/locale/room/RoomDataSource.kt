@@ -56,4 +56,14 @@ class RoomDataSource @Inject constructor(
     override fun db(): RoomDatabase {
         return db
     }
+
+    override suspend fun updateTopTeam(teams: List<TopTeamModel>) {
+        return db.topTeamDao().updateTopTeam(teams)
+    }
+
+    override suspend fun updateTopDrivers(drivers: List<TopDriversModel>) {
+        return db.topDriversDao().updateTopDrivers(drivers)
+    }
+
+
 }

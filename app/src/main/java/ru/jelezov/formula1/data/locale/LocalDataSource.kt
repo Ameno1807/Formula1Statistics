@@ -13,4 +13,6 @@ interface LocalDataSource {
     suspend fun deleteAllTopDriversList()
     suspend fun deleteAllTopTeamsList()
     fun db() : RoomDatabase
+    suspend fun updateTopTeam(teams: List<TopTeamModel>)
+    suspend fun updateTopDrivers(drivers: List<TopDriversModel>)
 }

@@ -1,13 +1,7 @@
 package ru.jelezov.formula1.repository
 
-import androidx.room.withTransaction
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
 import ru.jelezov.formula1.data.locale.room.RoomDataSource
 import ru.jelezov.formula1.data.remote.retrofit.RetrofitDataSource
-import ru.jelezov.formula1.model.TopDriversModel
-import ru.jelezov.formula1.model.TopTeamModel
-import ru.jelezov.formula1.utils.Resource
 import ru.jelezov.formula1.utils.networkBoundResource
 import javax.inject.Inject
 
@@ -15,37 +9,35 @@ class Repository @Inject constructor(
     private val remoteDataSource: RetrofitDataSource,
     private val db: RoomDataSource
 ) {
-    fun loadTopTeam(): Flow<Resource<List<TopTeamModel>>> = networkBoundResource(
-        query = {
+    fun loadTopTeam() = networkBoundResource(
+        loadFromDb = {
             db.readAllTopTeam()
         },
-        fetch = {
-            delay(500)
-            remoteDataSource.loadTopTeam()
+        fetchData = {
+          remoteDataSource.loadTopTeam()
         },
         saveFetchResult = { team ->
-            db.db().withTransaction {
-                db.deleteAllTopTeamsList()
-                db.insertTopTeam(team)
-            }
-
+            db.insertTopTeam(team)
+            db.updateTopTeam(team)
+        },
+        shouldFetch = { team ->
+            team.isEmpty()
         }
     )
 
-
-    fun loadTopDrivers() : Flow<Resource<List<TopDriversModel>>> = networkBoundResource(
-        query = {
+    fun loadTopDrivers() = networkBoundResource(
+        loadFromDb = {
             db.readAllTopDrivers()
         },
-        fetch = {
-            delay(500)
+        fetchData = {
             remoteDataSource.loadTopDrivers()
         },
         saveFetchResult = { drivers ->
-            db.db().withTransaction {
-                db.deleteAllTopDriversList()
-                db.insertTopDrivers(drivers)
-            }
+            db.insertTopDrivers(drivers)
+            db.updateTopDrivers(drivers)
+        },
+        shouldFetch = { drivers ->
+            drivers.isEmpty()
         }
     )
 

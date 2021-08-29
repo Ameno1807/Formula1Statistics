@@ -1,26 +1,26 @@
 package ru.jelezov.formula1.utils
 
+import android.util.Log
 import kotlinx.coroutines.flow.*
 
 inline fun <ResultType, RequestType> networkBoundResource(
-    crossinline query: () -> Flow<ResultType>,
-    crossinline fetch: suspend () -> RequestType,
-    crossinline saveFetchResult: suspend (RequestType) -> Unit,
-    crossinline shouldFetch: (ResultType) -> Boolean = { true }
+    crossinline loadFromDb: () -> Flow<ResultType>,
+    crossinline shouldFetch: (ResultType) -> Boolean = { true },
+    crossinline fetchData: suspend (ResultType) -> RequestType,
+    crossinline saveFetchResult: suspend (RequestType) -> Unit
 ) = flow {
-    val data = query().first()
+    val data = loadFromDb().first()
 
     val flow = if (shouldFetch(data)) {
         emit(Resource.Loading(data))
-
         try {
-            saveFetchResult(fetch())
-            query().map { Resource.Success(it) }
-        } catch (throwable: Throwable) {
-            query().map { Resource.Error(throwable, it) }
+            saveFetchResult(fetchData(data))
+            loadFromDb().map { Resource.Success(it) }
+        } catch (exception: Throwable) {
+            loadFromDb().map { Resource.Error(exception, it) }
         }
     } else {
-        query().map { Resource.Success(it) }
+        loadFromDb().map { Resource.Success(it) }
     }
 
     emitAll(flow)
