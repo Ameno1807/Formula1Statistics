@@ -8,6 +8,19 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#D50000</color>
-    <color name="gray">#F0F4F7</color>
+    <color name="gray">#E0E0E0</color>
     <color name="dark_white">#EEEEEE</color>
+    <color name="merc_color">#00d1bc</color>
+    <color name="redbull_color">#0600ef</color>
+    <color name="mclaren_color">#FF9800</color>
+    <color name="ferrari_color">#dc0000</color>
+    <color name="alpine_color">#0090ff</color>
+    <color name="alphatauri_color">#2b4562</color>
+    <color name="astonmartin_color">#006f62</color>
+    <color name="williams_color">#005aff</color>
+    <color name="alfaromeo_color">#900000</color>
+    <color name="haas_color">#E0E0E0</color>
+    <color name="mers_color_dark">#009e8e</color>
+    <color name="white_dark">#EEEEEE</color>
+    <color name="color_status_bar">#E0E0E0</color>
 </resources>

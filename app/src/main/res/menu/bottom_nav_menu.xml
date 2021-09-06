@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/fragment_race_calendar"
+        android:icon="@drawable/ic_calendar"
+        android:title="@string/title_raceCalendar" />
+
+    <item
+        android:id="@+id/fragment_top_team"
         android:icon="@drawable/ic_racing_car"
         android:title="@string/title_topTeam" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/fragment_top_drivers"
         android:icon="@drawable/racer"
         android:title="@string/title_topRaces" />
-
-    <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_calendar"
-        android:title="@string/title_raceCalendar" />
 
 </menu>

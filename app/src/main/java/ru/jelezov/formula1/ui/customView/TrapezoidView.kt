@@ -35,6 +35,6 @@ class TrapezoidView(context: Context?, attrs: AttributeSet?) :
         mTrapezoid = ShapeDrawable(PathShape(path, 200.0f, 100.0f))
         mTrapezoid.paint.style = Paint.Style.FILL_AND_STROKE
         mTrapezoid.paint.strokeWidth = 1.0f
-        mTrapezoid.paint.color = Color.BLACK
+        mTrapezoid.paint.color = Color.RED
     }
 }

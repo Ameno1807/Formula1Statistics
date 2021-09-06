@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/fragment_race_calendar">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/fragment_top_team"
         android:name="ru.jelezov.formula1.ui.topTeamFragment.FragmentTopTeam"
         android:label="@string/title_topTeam"
         tools:layout="@layout/fragment_top_drivers" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/fragment_top_drivers"
         android:name="ru.jelezov.formula1.ui.topDriversFragment.FragmentTopDrivers"
         android:label="@string/title_topRaces"
         tools:layout="@layout/fragment_top_team" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/fragment_race_calendar"
         android:name="ru.jelezov.formula1.ui.raceCalendar.FragmentRaceCalendar"
         android:label="@string/title_raceCalendar"
         tools:layout="@layout/fragment_race_calendar" />

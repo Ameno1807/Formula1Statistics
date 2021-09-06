@@ -1,89 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
+    android:layout_height="85dp"
     android:layout_marginStart="3dp"
+    android:layout_marginTop="4dp"
     android:layout_marginEnd="3dp"
-    app:cardBackgroundColor="@color/gray">
+    android:layout_marginBottom="3dp">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/background_team"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/bg_mercedes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ru.jelezov.formula1.ui.customView.TrapezoidView
-            android:id="@+id/trapezoidView"
-            android:layout_width="45dp"
-            android:layout_height="wrap_content"
-            android:rotationX="180"
-            app:layout_constraintBottom_toBottomOf="parent"
+
+        <View
+            android:id="@+id/logo_team"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/mercedes_logo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="15dp" />
 
-
-        <ru.jelezov.formula1.ui.customView.TrapezoidViewRed
-            android:layout_width="55dp"
-            android:layout_height="wrap_content"
-            android:rotationY="180"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/position"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginStart="7dp"
-            android:fontFamily="@font/xolonium_bold"
-            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/formula1_regular"
+            android:layout_marginEnd="15dp"
+            android:shadowColor="@color/black"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="1"
             android:text="@string/_1"
-            android:textColor="@color/white"
-            android:textSize="10sp"
+            android:textColor="@color/dark_white"
+            android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/points"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
             tools:ignore="SmallSp"
-            android:layout_marginLeft="7dp" />
-
+            android:layout_marginRight="15dp" />
 
         <TextView
             android:id="@+id/team_name"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="130dp"
-            android:fontFamily="@font/xolonium_bold"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="13dp"
+            android:fontFamily="@font/formula1_regular"
             android:gravity="center"
+            android:shadowColor="@color/black"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="1"
             android:text="@string/mercedes"
-            android:textColor="@color/black"
-            android:textSize="10sp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view_team"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginLeft="130dp"
-            tools:ignore="SmallSp" />
+            tools:ignore="SmallSp"
+            android:layout_marginLeft="3dp" />
 
         <TextView
             android:id="@+id/points"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginEnd="7dp"
-            android:fontFamily="@font/xolonium_bold"
-            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/formula1_regular"
+            android:shadowColor="@color/black"
+            android:layout_marginEnd="15dp"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="1"
             android:text="@string/_100"
             android:textColor="@color/white"
-            android:textSize="10sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/position"
+            tools:ignore="SmallSp"
+            android:layout_marginRight="15dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/view_team_back"
+            android:layout_width="4dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:hardwareAccelerated="false"
+            app:cardCornerRadius="1dp"
+            app:cardElevation="5dp"
+            app:layout_constraintStart_toEndOf="@+id/logo_team"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginRight="7dp"
-            tools:ignore="SmallSp" />
+            tools:targetApi="lollipop"
+            android:layout_marginLeft="8dp" />
 
-
+        <View
+            android:id="@+id/view_team"
+            android:layout_width="4dp"
+            android:layout_height="25dp"
+            android:background="@color/merc_color"
+            android:elevation="15dp"
+            app:cardBackgroundColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/view_team_back"
+            app:layout_constraintEnd_toEndOf="@+id/view_team_back"
+            app:layout_constraintStart_toStartOf="@+id/view_team_back"
+            app:layout_constraintTop_toTopOf="@+id/view_team_back"
+            tools:targetApi="lollipop" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+
+    <View
+        android:id="@+id/car_team"
+        android:layout_marginTop="35dp"
+        android:layout_width="250dp"
+        android:layout_height="65dp"
+        android:background="@drawable/mercedes_car"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

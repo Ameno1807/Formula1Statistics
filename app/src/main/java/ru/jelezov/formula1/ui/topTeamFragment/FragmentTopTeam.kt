@@ -52,14 +52,6 @@ class FragmentTopTeam: Fragment() {
 
     private fun decorateStockList(recyclerView: RecyclerView) {
         recyclerView.apply {
-            val alterBackground = ResourcesCompat
-                .getDrawable(resources, R.drawable.bg_light_shape, context.theme)!!
-            val mainBackground = ResourcesCompat
-                .getDrawable(resources, R.drawable.bg_dark_shape, context.theme)!!
-
-            val decoration =
-                ItemDecoration(alterBackground, mainBackground)
-            addItemDecoration(decoration)
             hasFixedSize()
         }
     }
